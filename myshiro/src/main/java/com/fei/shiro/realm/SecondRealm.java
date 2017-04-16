@@ -16,14 +16,13 @@ import org.apache.shiro.util.ByteSource;
  * @Time：2017年4月9日 下午3:38:10
  * @version 1.0
  */
-public class ShiroRealm extends AuthenticatingRealm {
+public class SecondRealm extends AuthenticatingRealm {
 
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		
 		//System.out.println("doGetAuthenticationInfo" + token.hashCode());
-		
-		System.out.println("first realm doGetAuthenticationInfo");
+		System.out.println("[second realm doGetAuthenticationInfo]");
 		
 		UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) token;
 		
@@ -43,11 +42,11 @@ public class ShiroRealm extends AuthenticatingRealm {
 		Object principal = username;
 		
 		if("admin".equals(username)){
-			credentials = "038bdaf98f2037b31f1e75b5b4c9b26e";
+			credentials = "ce2f6417c7e1d32c1d81a797ee0b499f87c5de06---";
 		}
 		
 		if("user".equals(username)){
-			credentials = "098d2c478e9c11555ce2823231e02ec1";
+			credentials = "073d4c3ae812935f23cb3f2a71943f49e082a718---";
 		}
 		
 		String realmName = getName();
@@ -63,11 +62,11 @@ public class ShiroRealm extends AuthenticatingRealm {
 	
 	public static void main(String[] args) {
 		
-		String algorithmName = "MD5";
+		String algorithmName = "SHA1";
 		
 		String source = "123456";
 		
-		Object salt = ByteSource.Util.bytes("user");;
+		Object salt = ByteSource.Util.bytes("admin");;
 		
 		int hashIterations = 1024;
 		
