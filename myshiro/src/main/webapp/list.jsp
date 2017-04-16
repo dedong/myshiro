@@ -8,5 +8,7 @@
 </head>
 <body>
 	<h1>list jsp</h1>
+	
+	<a href="shiro/logout">注销</a>
 </body>
 </html>

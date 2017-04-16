@@ -21,7 +21,12 @@
     </bean>
 
     <bean id="jdbcRealm" class="com.fei.shiro.realm.ShiroRealm">
-       
+       <property name="credentialsMatcher">
+       		<bean class = "org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+       			<property name="hashAlgorithmName" value="MD5"></property>
+       			<property name="hashIterations" value="1024"></property>
+       		</bean>
+       </property>
     </bean>
 
     <!-- =========================================================
@@ -57,6 +62,8 @@
         <property name="filterChainDefinitions">
             <value>
                 /login.jsp = anon
+                /shiro/login = anon
+                /shiro/logout = logout
                 # everything else requires authentication:
                 /** = authc
             </value>
